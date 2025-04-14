@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة تفاعلية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        h1:hover {
+            color: #ff4081;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+        input:focus {
+            border-color: #ff4081;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff4081;
+        }
+        .hidden {
+            display: none;
+        }
+        .page {
+            margin-top: 20px;
+        }
+        .kiss {
+            font-size: 100px;
+            color: red;
+            display: none; /* مخفي في البداية */
+        }
+        .message {
+            font-size: 1.5em;
+            color: #4CAF50;
+            display: none; /* مخفي في البداية */
+        }
+    </style>
+</head>
+<body>
+    <div id="loginPage">
+        <h1>هاي بيبي🫦</h1>
+        <input type="text" id="code" placeholder="أدخل الرقم السري" aria-label="الرقم السري">
+        <button onclick="checkCode()">إرسال</button>
+        <p id="message"></p>
+    </div>
+    
+    <div id="welcomePage" class="hidden page">
+        <h1>الله يطعمني بوساتك 🔥</h1>
+        <p>أدخل اسم حبيب ميمي:</p>
+        <input type="text" id="name" placeholder="أدخل اسم حبيب ميمي" aria-label="اسم حبيب ميمي">
+        <button onclick="showKiss()">إظهار البوسات</button>
+        <p id="nameMessage"></p>
+        <div id="kiss" class="kiss">💋</div>
+        <p id="additionalMessage" class="message">تعال حبيبي، أني أمليك ❤️‍🔥❤️‍🔥</p>
+    </div>
+
+    <script>
+        function checkCode() {
+            const code = document.getElementById('code').value;
+            const message = document.getElementById('message');
+            const loginPage = document.getElementById('loginPage');
+            const welcomePage = document.getElementById('welcomePage');
+
+            if (code === '12345678') {
+                message.innerHTML = '';
+                loginPage.classList.add('hidden');
+                welcomePage.classList.remove('hidden');
+            } else {
+                message.textContent = 'رقم غير صحيح. حاول مرة أخرى.';
+                message.style.color = '#d32f2f';
+            }
+        }
+
+        function showKiss() {
+            const name = document.getElementById('name').value;
+            const nameMessage = document.getElementById('nameMessage');
+            const kiss = document.getElementById('kiss');
+            const additionalMessage = document.getElementById('additionalMessage');
+
+            // عرض البوسة بغض النظر عن الاسم المدخل
+            nameMessage.textContent = 'أحسنت! إليك البوسات!';
+            nameMessage.style.color = '#4CAF50';
+            kiss.style.display = 'block'; // إظهار البوسة
+            additionalMessage.style.display = 'block'; // إظهار الرسالة الإضافية
+        }
+    </script>
+</body>
+</html>
